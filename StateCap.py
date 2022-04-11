@@ -1,20 +1,3 @@
-"""We have an existing dictionary that maps US states to their capitals.
-1. Print the state capital of Idaho
-2. Print all states.
-3. Print all capitals.
-4. Create a single string 'Alabama -> Montgomery, Alaska -> Juneau, ...'
-5. Ensure the string you created in 4. is alphabetically sorted by state
-7. Now we want to add the reverse look up, given the name of a capital what state
-is it in?
-Implement the function def get_state(capital): below so it returns the state.
-GOTCHAS: What happens if two states have the same capital name, how do you
-handle that?
-
-"""
-import sys
-
-import pytest
-
 STATES_CAPITALS = {
     'Alabama' : 'Montgomery',
     'Alaska' : 'Juneau',
@@ -68,51 +51,49 @@ STATES_CAPITALS = {
     'Wyoming' : 'Cheyenne',
 }
 
+# adds the city idaho 
+def capital_of_Idaho(STATES_CAPITALS):
+    print(STATES_CAPITALS["Idaho"])
+# prints all the states in the dict
+def states_capitals_string(STATES_CAPITALS):
+    for i in STATES_CAPITALS:
+        print(i)
+# prints all the cities in the dict 
+def all_capitals(STATES_CAPITALS):
+    for i in STATES_CAPITALS:
+        print(STATES_CAPITALS[i])
+# prints the items in dict in the above order using the above format
+def state_capital(STATES_CAPITALS):
+    for i in STATES_CAPITALS:
+        print(f'{i} -> {STATES_CAPITALS[i]}', end=' , ')
+# prints the items in dict in the above order using the above format in sorted order
+def state_capital_sorted(STATES_CAPITALS):
+    sorted_states = sorted(STATES_CAPITALS.items())
+    for i in sorted_states:
+        print(f'{i[0]} -> {i[1]}', end=' , ')
+# function that asks the user for input of a city the function scans the dictionary items and returns the value of the key 
+# Also there is an if condition that checks for duplicates and if there is a duplicate prints an error 
+def reverse(STATES_CAPITALS):
+    city=input('enter the city:')
+    counter=0
+    for key,value in STATES_CAPITALS.items():
+        if value == city:
+            counter+=1
+            state=key
+    if counter > 1:
+        print('Error - more than one state with the same capital')
+    elif counter==1:
+                print(f'The state of {city} is',state)
 
-def capital_of_Idaho():
-    # Your code here
-    pass
-
-def all_states():
-    # Your code here
-    pass
-
-def all_capitals():
-    # Your code here
-    pass
-
-def states_capitals_string():
-    # Your code here
-    pass
-
-
-
-def get_state(capital):
-    pass
-
-
-
-def test_state_to_capital():
-    assert 'Cheyenne' == STATES_CAPITALS['Wyoming']
-
-
-def test_state_to_capital_unknown():
-    with pytest.raises(KeyError):
-        STATES_CAPITALS['']
-
-
-def test_capital_to_state():
-    assert 'Wyoming' == get_state('Cheyenne')
-
-
-def test_capital_to_state_unknown():
-    with pytest.raises(KeyError):
-        get_state('')
-
-
-def main():
-    return pytest.main(__file__)
-
-
-if __name__ == '__main__':
-    sys.exit(main())
+# 
+capital_of_Idaho(STATES_CAPITALS)
+print()
+states_capitals_string(STATES_CAPITALS)
+print()
+all_capitals(STATES_CAPITALS)
+print()
+state_capital(STATES_CAPITALS)
+print()
+state_capital_sorted(STATES_CAPITALS)
+print()
+reverse(STATES_CAPITALS)
