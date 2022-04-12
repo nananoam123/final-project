@@ -1,26 +1,36 @@
-"""With this string:
-'monty pythons flying circus'
-Create a function that returns a sorted string with no duplicate characters
-(keep any whitespace):
-Example: ' cfghilmnoprstuy'
-Create a function that returns the words in reverse order:
-Example: ['circus', 'flying', 'pythons', 'monty']
-Create a function that returns a list of 4 character strings:
-Example: ['mont', 'y py', 'thon', 's fl', 'ying', ' cir', 'cus']
-### git comment
-"""
-import pytest
 
-def no_duplicates(a_string):
-    pass
+# This function removes character duplicates and creates a new sorted string 
+msting='monty pythons flying circus'
+duplicates = []
+tstring = ""
+def no_duplicates(msting):
+
+    tstring = ""
+    for i in msting :
+        if i not in tstring and i != " " :
+            tstring=tstring + i
+    sortlist = sorted(tstring)
+    print("".join(sortlist))
 
 
-def reversed_words(a_string):
-    pass
 
 
-def four_char_strings(a_string):
-    pass
+# A function that creates a list from the string in reverse order  
+def reversed_words(msting):
+    tlist = msting.split(" ")
+    tlist=tlist[::-1]
+    print(tlist)
+
+
+# A function that creates a list and adds an element to the list every 4 characters 
+def four_char_strings(msting):
+
+    print([msting[i:i+4] for i in range(0,len(msting),4)])
+
+
+
+
+
 
 
 def test_no_duplicates():
@@ -38,10 +48,9 @@ def test_four_char_strings():
     assert four_char_strings(s) == ['mont', 'y py', 'thon', 's fl', 'ying', ' cir', 'cus']
 
 
-def main():
-    return pytest.main(__file__)
 
-
-if __name__ == '__main__':
-    main()
-    
+no_duplicates(msting)
+print("")
+reversed_words(msting)
+print("")
+four_char_strings(msting)
